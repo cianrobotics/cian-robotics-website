@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIAN Robotics</title>
+  
+  <!-- Styles -->
+  <link rel="preload" href="css/normalize.css" as="style"> 
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="preload" href="css/style.css" as="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Animejs version 3.2.2 CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+</head>
+
+<body>
+  <!-- Encabezado -->
+  <header class="contenedor-flex">
+    <img class="logo" src="img/LOGO.png" alt="logo-cian-robotics" width="150">
+    <nav class="navegacion-principal">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Sección Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-text">
+      <h1>Automatización Inteligente para la Industria</h1>
+      <p>CIAN Robotics: haciendo la automatización más fácil y eficiente.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact-section">
+    <!-- Contenedor centrado para Instagram y Formulario -->
+    <div class="contact-centered-container">
+      <!-- Publicación de Instagram -->
+      <div class="instagram-container">
+        <blockquote class="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/cian_robotics/" 
+                data-instgrm-version="14">
+        </blockquote>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="form-container">
+        <h3>Mensaje</h3>
+        <form autocomplete="on">
+          <fieldset>
+            <legend>Por favor, rellene todos los campos requeridos.</legend>
+
+            <legend>Datos Personales</legend>
+            <div>
+              <label for="nombre">Nombre:</label>
+              <input type="text" placeholder="Tu Nombre" autofocus maxlength="35" id="nombre" name="nombre" required>
+            </div>
+
+            <div>
+              <label for="teléfono">Teléfono:</label>
+              <input type="tel" placeholder="Tu teléfono" maxlength="10" id="telefono" name="telefono" required>
+            </div>
+
+            <div>
+              <label for="correo">Correo:</label>
+              <input type="email" placeholder="Tu email" id="correo" name="correo" required>
+            </div>
+
+            <div>
+              <label for="asunto">Asunto:</label>
+              <input type="text" placeholder="Motivo del contacto" id="asunto" name="asunto">
+            </div>
+            
+            <div>
+              <label for="mensaje"></label>
+              <textarea placeholder="Tu mensaje" maxlength="150" id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+          </fieldset>
+          
+          <button type="submit" class="btn-submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 CIAN Robotics - Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+  <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
