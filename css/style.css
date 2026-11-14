@@ -54,7 +54,7 @@ header nav a {
 }
 
 .hero {
-  background: url(../img/hero.png) center/cover no-repeat;
+  background: url(../img/hero.webp) center/cover no-repeat;
   height: 50rem;
   display: flex;
   justify-content: center;
@@ -71,14 +71,18 @@ header nav a {
 }
 
 .btn-cta {
-  background-color: var(--color_verdigris);
+  display: inline-block;
+  background-color: var(--color_teal);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 1.2rem 3rem;
   margin-top: 20px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
   border-radius: 50px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-cta:hover {
@@ -144,7 +148,7 @@ header nav a {
   margin: 0 auto;
 }
 
-section li {
+.productos_oferta li {
   background-color: var(--color_verdigris);
   margin: 20px;
   padding: 20px;
@@ -155,7 +159,7 @@ section li {
   transition: transform 0.3s ease;
 }
 
-section li:hover {
+.productos_oferta li:hover {
   transform: translateX(-30px);
 }
 
@@ -314,4 +318,760 @@ footer {
 .instagram-container {
   display: flex;
   justify-content: center;
+}
+
+/* ===================== Utilidades generales ===================== */
+[hidden] {
+  display: none !important;
+}
+
+body.sin-scroll {
+  overflow: hidden;
+}
+
+header {
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.navegacion-principal a[aria-current="page"] {
+  background-color: rgba(245, 245, 245, 0.18);
+}
+
+.hero-corto {
+  height: 30rem;
+}
+
+.oferta h2 {
+  font-size: 3rem;
+  color: var(--color_gunmetal);
+  margin: 0 0 1rem;
+}
+
+.oferta-intro {
+  font-size: 1.8rem;
+  margin: 0 0 1rem;
+}
+
+/* ===================== Selector de idioma ===================== */
+.selector-idioma {
+  display: flex;
+  border: 2px solid var(--color_blanco);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.idioma-btn {
+  background: transparent;
+  color: var(--color_blanco);
+  border: 0;
+  padding: 0.6rem 1.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.idioma-btn[aria-pressed="true"] {
+  background: var(--color_blanco);
+  color: var(--color_gunmetal);
+}
+
+.idioma-btn:focus-visible,
+.filtro:focus-visible,
+.btn-comprar:focus-visible,
+.modal-cerrar:focus-visible {
+  outline: 3px solid var(--color_gunmetal);
+  outline-offset: 2px;
+}
+
+/* ===================== Tienda: Cursos y kits ===================== */
+.tienda {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.filtros {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.filtro {
+  border: 2px solid var(--color_teal);
+  background: #fff;
+  color: var(--color_teal);
+  border-radius: 999px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filtro:hover {
+  background: rgba(0, 128, 128, 0.08);
+}
+
+.filtro[aria-pressed="true"] {
+  background: var(--color_teal);
+  color: var(--color_blanco);
+}
+
+.categoria-tienda {
+  margin-bottom: 5rem;
+}
+
+.categoria-banner {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color_gunmetal), var(--color_midnight_green));
+  color: var(--color_blanco);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.categoria-banner img {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.categoria-banner h2 {
+  margin: 0 0 0.8rem;
+  font-size: 2.8rem;
+}
+
+.categoria-banner p {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5rem;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: #fff;
+  border: 0;
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(11, 38, 43, 0.18);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(11, 38, 43, 0.25);
+}
+
+.producto:focus-visible {
+  outline: 3px solid var(--color_teal);
+  outline-offset: 3px;
+}
+
+.producto-imagen {
+  aspect-ratio: 4 / 5;
+  background: #fff;
+}
+
+.producto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.producto-info {
+  padding: 1.6rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.producto-categoria {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color_teal);
+  font-weight: bold;
+}
+
+.producto-nombre {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.3;
+  color: var(--color_gunmetal);
+}
+
+.producto-etiquetas {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  min-height: 2.4rem;
+}
+
+.etiqueta {
+  background: rgba(0, 177, 177, 0.14);
+  color: var(--color_midnight_green);
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+}
+
+.producto-pie {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.producto-precio {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--color_teal);
+}
+
+.producto-ver {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color_midnight_green);
+}
+
+.tienda-nota {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color_midnight_green);
+}
+
+/* ----- Ficha del producto (modal) ----- */
+.modal {
+  border: 0;
+  padding: 0;
+  border-radius: 18px;
+  width: min(960px, calc(100% - 3.2rem));
+  max-height: calc(100vh - 4rem);
+  background: #fff;
+  color: var(--color_oscuro);
+  box-shadow: 0 20px 60px rgba(4, 4, 4, 0.4);
+  overflow: hidden;
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal::backdrop {
+  background: rgba(4, 4, 4, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 2;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0;
+  background: var(--color_gunmetal);
+  color: var(--color_blanco);
+  font-size: 2.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-cerrar:hover {
+  background: var(--color_teal);
+}
+
+.modal-cuerpo {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "imagen info"
+    "compra info";
+  column-gap: 3.5rem;
+  row-gap: 2rem;
+}
+
+.modal-imagen {
+  grid-area: imagen;
+  background: var(--color_blanco);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(11, 38, 43, 0.12);
+}
+
+.modal-imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-info {
+  grid-area: info;
+  min-width: 0;
+}
+
+.modal-compra {
+  grid-area: compra;
+  align-self: start;
+}
+
+.modal-titulo {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin: 0 4.5rem 0.4rem 0;
+  color: var(--color_gunmetal);
+}
+
+.modal-categoria {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color_teal);
+}
+
+.modal-separador {
+  border: 0;
+  border-top: 1px solid #dde5e6;
+  margin: 2rem 0;
+}
+
+.modal-precio {
+  font-size: 3.6rem;
+  font-weight: bold;
+  color: var(--color_teal);
+  margin: 0 0 1rem;
+}
+
+.modal-descripcion {
+  font-size: 1.7rem;
+  line-height: 1.55;
+  margin: 0 0 2rem;
+}
+
+.modal-caja,
+.modal-caja-borde {
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.modal-caja {
+  background: var(--color_blanco);
+}
+
+.modal-caja-borde {
+  border: 1px solid #dde5e6;
+}
+
+.modal-caja h3,
+.modal-caja-borde h3 {
+  margin: 0 0 1.2rem;
+  font-size: 1.9rem;
+  color: var(--color_gunmetal);
+}
+
+.modal-incluye {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.modal-incluye li {
+  position: relative;
+  padding-left: 2.8rem;
+  font-size: 1.6rem;
+  line-height: 1.45;
+}
+
+.modal-incluye li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color_teal);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.modal-nota {
+  margin: 1.4rem 0 0;
+  font-size: 1.45rem;
+  font-style: italic;
+  color: var(--color_midnight_green);
+}
+
+.modal-specs {
+  margin: 0;
+}
+
+.spec {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #edf1f2;
+  font-size: 1.55rem;
+}
+
+.spec:last-child {
+  border-bottom: 0;
+}
+
+.spec dt {
+  font-weight: bold;
+  color: var(--color_gunmetal);
+}
+
+.spec dd {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.btn-comprar {
+  width: 100%;
+  background: var(--color_teal);
+  color: var(--color_blanco);
+  border: 0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-size: 1.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-comprar:hover {
+  background: var(--color_midnight_green);
+}
+
+.aviso-whatsapp {
+  background: var(--color_gunmetal);
+  color: var(--color_blanco);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.aviso-whatsapp h4 {
+  margin: 0 0 0.8rem;
+  font-size: 1.8rem;
+}
+
+.aviso-whatsapp p {
+  margin: 0 0 1.6rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.btn-whatsapp-ir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--color_verdigris);
+  color: var(--color_gunmetal);
+  border-radius: 10px;
+  padding: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-whatsapp-ir:hover {
+  background: var(--color_blanco);
+}
+
+.btn-whatsapp-ir svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-whatsapp-volver {
+  width: 100%;
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--color_blanco);
+  border: 1px solid rgba(245, 245, 245, 0.5);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-whatsapp-volver:hover {
+  background: rgba(245, 245, 245, 0.1);
+}
+
+/* ===================== Nosotros ===================== */
+.seccion {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.seccion h2 {
+  font-size: 3rem;
+  color: var(--color_gunmetal);
+  margin: 0 0 1rem;
+}
+
+.seccion > p {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.foto {
+  margin: 0;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(11, 38, 43, 0.18);
+}
+
+.foto img,
+.foto-vacia {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: block;
+}
+
+.foto img {
+  height: auto;
+  object-fit: cover;
+}
+
+.foto-vacia {
+  display: grid;
+  place-items: center;
+  color: var(--color_teal);
+  background:
+    repeating-linear-gradient(45deg, rgba(0, 128, 128, 0.06) 0 12px, transparent 12px 24px),
+    var(--color_blanco);
+}
+
+.foto-vacia svg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.6;
+}
+
+.foto figcaption {
+  padding: 1.2rem 1.4rem;
+  font-size: 1.5rem;
+  color: var(--color_midnight_green);
+}
+
+.seccion-oscura {
+  max-width: none;
+  background: var(--color_gunmetal);
+  color: var(--color_blanco);
+}
+
+.seccion-oscura h2 {
+  color: var(--color_blanco);
+}
+
+.redes {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.red {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 2.6rem;
+  border-radius: 999px;
+  background: var(--color_teal);
+  color: var(--color_blanco);
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.red:hover {
+  background: var(--color_midnight_green);
+  transform: translateY(-2px);
+}
+
+.red-whatsapp {
+  background: var(--color_verdigris);
+  color: var(--color_gunmetal);
+}
+
+.red-whatsapp:hover {
+  background: var(--color_blanco);
+}
+
+.red svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ===================== Pie de página y WhatsApp ===================== */
+footer p {
+  margin: 0.4rem 0;
+}
+
+.footer-redes {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-redes a {
+  color: var(--color_verdigris);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-redes a:hover {
+  text-decoration: underline;
+}
+
+.whatsapp-flotante {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 50;
+  width: 5.8rem;
+  height: 5.8rem;
+  border-radius: 50%;
+  background: var(--color_verdigris);
+  color: var(--color_gunmetal);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(4, 4, 4, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-flotante:hover {
+  transform: scale(1.08);
+}
+
+.whatsapp-flotante svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ===================== Responsive (tienda y nosotros) ===================== */
+@media (max-width: 768px) {
+  .hero-corto {
+    height: 24rem;
+  }
+
+  .categoria-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .catalogo {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.6rem;
+  }
+
+  .producto-info {
+    padding: 1.2rem 1.2rem 1.6rem;
+  }
+
+  .producto-nombre {
+    font-size: 1.6rem;
+  }
+
+  .producto-precio {
+    font-size: 2rem;
+  }
+
+  .modal {
+    width: calc(100% - 2rem);
+    max-height: calc(100vh - 2rem);
+  }
+
+  .modal-cuerpo {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "imagen"
+      "info"
+      "compra";
+    padding: 2rem 2rem 0;
+  }
+
+  .modal-imagen {
+    max-width: 280px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .modal-titulo {
+    font-size: 2.4rem;
+  }
+
+  .modal-precio {
+    font-size: 3rem;
+  }
+
+  /* El botón de compra queda siempre visible al fondo de la ficha */
+  .modal-compra {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 1.2rem 0 2rem;
+    box-shadow: 0 -10px 12px -10px rgba(4, 4, 4, 0.2);
+  }
+
+  .whatsapp-flotante {
+    right: 1.6rem;
+    bottom: 1.6rem;
+  }
 }
