@@ -11,25 +11,29 @@ const CATEGORIAS = {
 
 // Contenido que se repite entre productos
 const CURSO_BRAZO = {
-  es: 'Curso en video del brazo robótico: ensamblaje y calibración, programación en Arduino, control desde Python y las matemáticas del brazo explicadas de forma sencilla',
-  en: 'Robotic arm video course: assembly and calibration, Arduino programming, control from Python and the arm math explained simply'
+  es: 'Curso en video con las matemáticas más importantes de un brazo robótico (espacio de trabajo, cinemática directa e inversa, matrices de rotación) y cómo programar esas ecuaciones en Arduino y Python',
+  en: 'Video course on the most important math of a robotic arm (workspace, forward and inverse kinematics, rotation matrices) and how to program those equations in Arduino and Python'
 };
 const KIT_BRAZO = {
-  es: 'Kit del brazo robótico Neutrino: piezas impresas en 3D y 4 servomotores',
-  en: 'Neutrino robotic arm kit: 3D printed parts and 4 servo motors'
+  es: 'Brazo robótico Neutrino (piezas impresas en 3D)',
+  en: 'Neutrino robotic arm (3D printed parts)'
 };
+const MOTORES_BRAZO = { es: '4 servomotores', en: '4 servo motors' };
 const ARDUINO = { es: 'Arduino UNO R3 (compatible) con cable USB', en: 'Arduino UNO R3 (compatible) with USB cable' };
-const ELIMINADOR = { es: 'Eliminador de 5 V / 3 A con conector USB-C', en: '5 V / 3 A USB-C power adapter' };
-const CABLES = { es: 'Cables de conexión', en: 'Jumper wires' };
+const ELIMINADOR = { es: 'Eliminador de voltaje de 5 V / 3 A con conector USB-C', en: '5 V / 3 A USB-C power adapter' };
+const JUMPERS = { es: 'Jumpers (cables de conexión)', en: 'Jumper wires' };
+const TORNILLOS = { es: 'Tornillos', en: 'Screws' };
+const PIEZAS_BRAZO = [KIT_BRAZO, MOTORES_BRAZO, ELIMINADOR, JUMPERS, TORNILLOS];
 
 const CURSO_PID = {
-  es: 'Curso en video "Control PID de motor a pasos" (6 clases)',
-  en: '"Stepper motor PID control" video course (6 lessons)'
+  es: 'Curso en video "Control PID de motor a pasos": la matemática detrás de un controlador PID aplicada a la vida real, para controlar la posición de un motor y convertirlo en un servomotor robusto de 360°',
+  en: '"Stepper motor PID control" video course: the math behind a PID controller applied to real life, to control a motor\'s position and turn it into a robust 360° servo motor'
 };
 const MOTOR = { es: 'Motor a pasos NEMA 17', en: 'NEMA 17 stepper motor' };
 const DRIVER = { es: 'Driver TB6600', en: 'TB6600 driver' };
 const SENSOR = { es: 'Sensor magnético AS5600 (encoder)', en: 'AS5600 magnetic sensor (encoder)' };
-const FUENTE = { es: 'Fuente de alimentación', en: 'Power supply' };
+const FUENTE = { es: 'Fuente de voltaje', en: 'Power supply' };
+const PIEZAS_PID = [MOTOR, SENSOR, DRIVER, FUENTE];
 
 const SPECS_BRAZO = [
   { es: ['Servomotores', '2× MG996R (engranes metálicos), 1× MG90S y 1× SG90'], en: ['Servo motors', '2× MG996R (metal gears), 1× MG90S and 1× SG90'] },
@@ -38,24 +42,25 @@ const SPECS_BRAZO = [
   { es: ['Alimentación', '5 V / 3 A'], en: ['Power', '5 V / 3 A'] },
   { es: ['Programación', 'Arduino (C++) y Python'], en: ['Programming', 'Arduino (C++) and Python'] }
 ];
-const TEMARIO_BRAZO = { es: ['Temario', 'Ensamblaje y calibración · Programación en Arduino · Control desde Python · Cinemática del brazo'], en: ['Syllabus', 'Assembly and calibration · Arduino programming · Control from Python · Arm kinematics'] };
+const TEMARIO_BRAZO = { es: ['Temario', 'Espacio de trabajo · Cinemática directa · Cinemática inversa · Matrices de rotación · Programación de las ecuaciones en Arduino y Python'], en: ['Syllabus', 'Workspace · Forward kinematics · Inverse kinematics · Rotation matrices · Programming the equations in Arduino and Python'] };
 
 const SPECS_PID = [
   { es: ['Motor', 'NEMA 17 a pasos'], en: ['Motor', 'NEMA 17 stepper'] },
   { es: ['Driver', 'TB6600'], en: ['Driver', 'TB6600'] },
   { es: ['Sensor', 'AS5600, encoder magnético de 12 bits'], en: ['Sensor', 'AS5600, 12-bit magnetic encoder'] },
-  { es: ['Control', 'PID en lazo cerrado'], en: ['Control', 'Closed-loop PID'] },
+  { es: ['Control', 'PID de posición en lazo cerrado'], en: ['Control', 'Closed-loop PID position control'] },
+  { es: ['Resultado', 'Servomotor robusto de 360°'], en: ['Result', 'Robust 360° servo motor'] },
   { es: ['Interfaz', 'Arduino y Python'], en: ['Interface', 'Arduino and Python'] }
 ];
-const TEMARIO_PID = { es: ['Temario', 'Introducción · Motor NEMA 17 de forma eficiente · Sensor AS5600 · Sensor + motor · Control PID · Interfaz en Arduino y Python'], en: ['Syllabus', 'Introduction · Driving a NEMA 17 efficiently · AS5600 sensor · Sensor + motor · PID control · Arduino and Python interface'] };
+const TEMARIO_PID = { es: ['Temario', 'La matemática del controlador PID · Motor NEMA 17 · Sensor AS5600 · Control de posición del motor · Interfaz en Arduino y Python'], en: ['Syllabus', 'The math of the PID controller · NEMA 17 motor · AS5600 sensor · Motor position control · Arduino and Python interface'] };
 
 const PRODUCTOS = [
   {
     id: 'brazo-curso-arduino', categoria: 'brazo', precio: 2400, curso: true, arduino: true,
     imagen: 'img/cursos/brazo-curso-arduino.webp',
     nombre: { es: 'Curso + kit Brazo robótico + Arduino', en: 'Course + Robotic arm kit + Arduino' },
-    descripcion: { es: 'El paquete completo: arma tu brazo robótico, prográmalo con Arduino y aprende paso a paso con el curso.', en: 'The complete bundle: build your robotic arm, program it with Arduino and learn step by step with the course.' },
-    incluye: [CURSO_BRAZO, KIT_BRAZO, ARDUINO, ELIMINADOR, CABLES],
+    descripcion: { es: 'El paquete completo: arma tu brazo robótico, aprende sus matemáticas (cinemática directa e inversa) y prográmalas en Arduino y Python.', en: 'The complete bundle: build your robotic arm, learn its math (forward and inverse kinematics) and program it in Arduino and Python.' },
+    incluye: [CURSO_BRAZO, ...PIEZAS_BRAZO, ARDUINO],
     specs: [...SPECS_BRAZO, TEMARIO_BRAZO]
   },
   {
@@ -63,7 +68,7 @@ const PRODUCTOS = [
     imagen: 'img/cursos/brazo-curso.webp',
     nombre: { es: 'Curso + Brazo robótico', en: 'Course + Robotic arm' },
     descripcion: { es: 'El brazo robótico con su curso. Ideal si ya tienes un Arduino UNO.', en: 'The robotic arm with its course. Ideal if you already own an Arduino UNO.' },
-    incluye: [CURSO_BRAZO, KIT_BRAZO, ELIMINADOR, CABLES],
+    incluye: [CURSO_BRAZO, ...PIEZAS_BRAZO],
     nota: { es: 'No incluye Arduino.', en: 'Arduino not included.' },
     specs: [...SPECS_BRAZO, TEMARIO_BRAZO]
   },
@@ -72,7 +77,7 @@ const PRODUCTOS = [
     imagen: 'img/cursos/brazo-arduino.webp',
     nombre: { es: 'Brazo robótico + Arduino', en: 'Robotic arm + Arduino' },
     descripcion: { es: 'El brazo robótico listo para programar, con su Arduino incluido.', en: 'The robotic arm ready to program, with its Arduino included.' },
-    incluye: [KIT_BRAZO, ARDUINO, ELIMINADOR, CABLES],
+    incluye: [...PIEZAS_BRAZO, ARDUINO],
     nota: { es: 'No incluye curso.', en: 'Course not included.' },
     specs: SPECS_BRAZO
   },
@@ -81,7 +86,7 @@ const PRODUCTOS = [
     imagen: 'img/cursos/brazo.webp',
     nombre: { es: 'Brazo robótico', en: 'Robotic arm' },
     descripcion: { es: 'Solo el brazo robótico Neutrino, para quien ya tiene su electrónica y experiencia.', en: 'Just the Neutrino robotic arm, for those who already have their electronics and experience.' },
-    incluye: [KIT_BRAZO],
+    incluye: PIEZAS_BRAZO,
     nota: { es: 'No incluye Arduino ni curso.', en: 'Arduino and course not included.' },
     specs: SPECS_BRAZO
   },
@@ -89,8 +94,8 @@ const PRODUCTOS = [
     id: 'pid-curso-kit-arduino', categoria: 'pid', precio: 1400, curso: true, arduino: true,
     imagen: 'img/cursos/pid-curso-kit-arduino.webp',
     nombre: { es: 'Curso Control PID + kit Motor + Arduino', en: 'PID Control course + Motor kit + Arduino' },
-    descripcion: { es: 'Todo para aprender control PID en un motor real: curso, kit de motor y Arduino.', en: 'Everything to learn PID control on a real motor: course, motor kit and Arduino.' },
-    incluye: [CURSO_PID, MOTOR, DRIVER, SENSOR, FUENTE, ARDUINO, CABLES],
+    descripcion: { es: 'Todo para aprender control PID en un motor real y convertirlo en un servomotor robusto de 360°: curso, kit de motor y Arduino.', en: 'Everything to learn PID control on a real motor and turn it into a robust 360° servo motor: course, motor kit and Arduino.' },
+    incluye: [CURSO_PID, ...PIEZAS_PID, ARDUINO],
     specs: [...SPECS_PID, TEMARIO_PID]
   },
   {
@@ -98,7 +103,7 @@ const PRODUCTOS = [
     imagen: 'img/cursos/pid-curso-kit.webp',
     nombre: { es: 'Curso Control PID + kit Motor', en: 'PID Control course + Motor kit' },
     descripcion: { es: 'El curso de control PID con el kit de motor. Ideal si ya tienes un Arduino UNO.', en: 'The PID control course with the motor kit. Ideal if you already own an Arduino UNO.' },
-    incluye: [CURSO_PID, MOTOR, DRIVER, SENSOR, FUENTE, CABLES],
+    incluye: [CURSO_PID, ...PIEZAS_PID],
     nota: { es: 'No incluye Arduino.', en: 'Arduino not included.' },
     specs: [...SPECS_PID, TEMARIO_PID]
   },
@@ -107,7 +112,7 @@ const PRODUCTOS = [
     imagen: 'img/cursos/kit-motor.webp',
     nombre: { es: 'Kit motor', en: 'Motor kit' },
     descripcion: { es: 'El kit de motor a pasos con sensor para tus propios proyectos de control.', en: 'The stepper motor kit with sensor for your own control projects.' },
-    incluye: [MOTOR, DRIVER, SENSOR, FUENTE, CABLES],
+    incluye: PIEZAS_PID,
     nota: { es: 'No incluye Arduino ni curso.', en: 'Arduino and course not included.' },
     specs: SPECS_PID
   }
