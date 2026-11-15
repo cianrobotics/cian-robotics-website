@@ -4,75 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIAN Robotics</title>
-  
+  <meta name="description" content="CIAN Robotics: robótica y automatización accesible. Brazos robóticos, cursos y kits de robótica y control.">
+
   <!-- Styles -->
-  <link rel="preload" href="css/normalize.css" as="style"> 
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="preload" href="css/style.css" as="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  
+
   <!-- Animejs version 3.2.2 CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-
 </head>
 
-<body>
+<body data-titulo="meta.titulo.inicio">
   <!-- Encabezado -->
   <header class="contenedor-flex">
-    <img class="logo" src="img/LOGO.png" alt="logo-cian-robotics" width="150">
+    <a href="index.html"><img class="logo" src="img/logo.webp" alt="Logotipo de CIAN Robotics" data-i18n-alt="logo.alt" width="150" height="150"></a>
     <nav class="navegacion-principal">
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Productos</a>
-      <a href="noticias.html">Noticias</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="index.html" aria-current="page" data-i18n="nav.principal">Principal</a>
+      <a href="cursos.html" data-i18n="nav.cursos">Cursos y kits</a>
+      <a href="nosotros.html" data-i18n="nav.nosotros">Nosotros</a>
     </nav>
+    <div class="selector-idioma" role="group" aria-label="Cambiar idioma" data-i18n-aria="nav.idioma">
+      <button type="button" class="idioma-btn" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" class="idioma-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
   </header>
 
   <!-- Sección Hero -->
   <section class="hero" id="inicio">
     <div class="hero-text">
-      <h1>Automatización Inteligente para la Industria</h1>
-      <p>CIAN Robotics: haciendo la automatización más fácil y eficiente.</p>
+      <h1 data-i18n="hero.titulo">Automatización Inteligente para la Industria</h1>
+      <p data-i18n="hero.texto">CIAN Robotics: haciendo la automatización más fácil y eficiente.</p>
     </div>
   </section>
 
   <!-- Objetivos y Visión -->
   <section class="productos">
-    <h2 id="Objetivos">Objetivos y Visión</h2>
+    <h2 id="Objetivos" data-i18n="inicio.objetivos.titulo">Objetivos y Visión</h2>
     <div class="cards">
       <div class="card">
-        <img src="img/hero.png" alt="Sistema de Robots">
-        <h3>Objetivos</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae doloribus reprehenderit repudiandae saepe, repellendus totam odio accusantium tempora rem dignissimos obcaecati quia illum</p>
+        <img src="img/hero.webp" alt="Brazo robótico CIAN" data-i18n-alt="inicio.objetivos.alt">
+        <h3 data-i18n="inicio.objetivos.h3">Objetivos</h3>
+        <p data-i18n="inicio.objetivos.texto">Acercar la robótica y la automatización a estudiantes, makers y empresas con robots accesibles, kits educativos y cursos prácticos desarrollados en México.</p>
       </div>
 
       <div class="card">
-        <img src="img/produccion.png" alt="Máquinas de Producción">
-        <h3>Visión</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempora repellendus nisi totam eum error voluptatum fuga quia dolore ab sit architecto facere, eos quam voluptate ipsa </p>
+        <img src="img/produccion.webp" alt="Brazos robóticos en una línea de producción" data-i18n-alt="inicio.vision.alt">
+        <h3 data-i18n="inicio.vision.h3">Visión</h3>
+        <p data-i18n="inicio.vision.texto">Ser un referente en robótica accesible en Latinoamérica: que cualquier persona pueda aprender, construir y automatizar, desde el salón de clases hasta la línea de producción.</p>
       </div>
     </div>
   </section>
 
-  <!-- productos -->
+  <!-- Soluciones -->
   <section class="oferta">
-    <ul class="productos_oferta"> 
-      <li>Explicación y relación entre productos ofertados y las soluciones que ofrecen</li>
-      <li>Estaciones de carga para autos eléctricos.</li>
-      <li>Baterías para bicicletas eléctricas y scooters</li>
-      <li>Brazos robóticos.</li>
-      <li>Máquinas CNCs para Corte Láser y Fresado.</li>
+    <h2 data-i18n="inicio.oferta.titulo">Nuestras soluciones</h2>
+    <p class="oferta-intro" data-i18n="inicio.oferta.intro">Desarrollamos tecnología para automatizar procesos y enseñar robótica de forma práctica:</p>
+    <ul class="productos_oferta">
+      <li data-i18n="inicio.oferta.cursos">Cursos y kits de robótica y control.</li>
+      <li data-i18n="inicio.oferta.brazos">Brazos robóticos.</li>
+      <li data-i18n="inicio.oferta.carga">Estaciones de carga para autos eléctricos.</li>
+      <li data-i18n="inicio.oferta.baterias">Baterías para bicicletas eléctricas y scooters.</li>
+      <li data-i18n="inicio.oferta.cnc">Máquinas CNC para corte láser y fresado.</li>
     </ul>
+    <a href="cursos.html" class="btn-cta" data-i18n="inicio.cta">Ver cursos y kits</a>
   </section>
 
   <!-- Pie de página -->
   <footer>
-    <p>&copy; 2025 CIAN Robotics - Todos los derechos reservados.</p>
+    <p data-i18n="footer.derechos">&copy; 2025 CIAN Robotics - Todos los derechos reservados.</p>
+    <p class="footer-redes">
+      <a href="https://wa.me/526463877829" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/cian_robotics/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@cian.robotics" target="_blank" rel="noopener">TikTok</a>
+    </p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/script.js"></script>
-  <script src="js/animations.js"></script>
+  <!-- Botón flotante de WhatsApp -->
+  <a class="whatsapp-flotante" href="https://wa.me/526463877829" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-i18n-aria="whatsapp.flotante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path transform="translate(7 6.6) scale(.42)" stroke-width="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
 
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/animations.js"></script>
 </body>
 </html>

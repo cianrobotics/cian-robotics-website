@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos y kits | CIAN Robotics</title>
+  <meta name="description" content="Compra tu kit de robótica: brazo robótico Neutrino y kit de control PID de motor a pasos, con o sin curso y Arduino.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Animejs version 3.2.2 CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+</head>
+
+<body data-titulo="meta.titulo.cursos">
+  <!-- Encabezado -->
+  <header class="contenedor-flex">
+    <a href="index.html"><img class="logo" src="img/logo.webp" alt="Logotipo de CIAN Robotics" data-i18n-alt="logo.alt" width="150" height="150"></a>
+    <nav class="navegacion-principal">
+      <a href="index.html" data-i18n="nav.principal">Principal</a>
+      <a href="cursos.html" aria-current="page" data-i18n="nav.cursos">Cursos y kits</a>
+      <a href="nosotros.html" data-i18n="nav.nosotros">Nosotros</a>
+    </nav>
+    <div class="selector-idioma" role="group" aria-label="Cambiar idioma" data-i18n-aria="nav.idioma">
+      <button type="button" class="idioma-btn" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" class="idioma-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <!-- Sección Hero -->
+  <section class="hero hero-corto">
+    <div class="hero-text">
+      <h1 data-i18n="cursos.hero.titulo">Cursos y kits de robótica</h1>
+      <p data-i18n="cursos.hero.texto">Aprende construyendo: elige tu kit, arma tu robot y domina su programación.</p>
+    </div>
+  </section>
+
+  <!-- Tienda -->
+  <main class="tienda">
+    <div class="filtros" role="group">
+      <button type="button" class="filtro" data-filtro="todos" aria-pressed="true" data-i18n="cursos.filtro.todos">Todos</button>
+      <button type="button" class="filtro" data-filtro="brazo" aria-pressed="false" data-i18n="cursos.filtro.brazo">Brazo robótico</button>
+      <button type="button" class="filtro" data-filtro="pid" aria-pressed="false" data-i18n="cursos.filtro.pid">Control PID</button>
+    </div>
+
+    <section class="categoria-tienda" data-categoria="brazo">
+      <div class="categoria-banner">
+        <img src="img/cursos/neutrino.webp" alt="Brazo robótico Neutrino" data-i18n-alt="cursos.brazo.alt" width="140" height="140">
+        <div>
+          <h2 data-i18n="cursos.brazo.titulo">Brazo robótico Neutrino</h2>
+          <p data-i18n="cursos.brazo.texto">Un brazo robótico de escritorio con servomotores, ideal para aprender cinemática, programación en Arduino y control desde Python.</p>
+        </div>
+      </div>
+      <!-- Las tarjetas se generan desde js/productos.js -->
+      <div class="catalogo" data-catalogo="brazo"></div>
+    </section>
+
+    <section class="categoria-tienda" data-categoria="pid">
+      <div class="categoria-banner">
+        <img src="img/cursos/portada-control-pid.webp" alt="Kit de control PID con motor NEMA 17" data-i18n-alt="cursos.pid.alt" width="140" height="140">
+        <div>
+          <h2 data-i18n="cursos.pid.titulo">Control PID de motor a pasos</h2>
+          <p data-i18n="cursos.pid.texto">Controla con precisión un motor NEMA 17 usando un sensor magnético AS5600 y un controlador PID programado por ti.</p>
+        </div>
+      </div>
+      <div class="catalogo" data-catalogo="pid"></div>
+    </section>
+
+    <p class="tienda-nota" data-i18n="cursos.nota">Precios en pesos mexicanos (MXN). Todas las compras se realizan por WhatsApp.</p>
+  </main>
+
+  <!-- Ficha del producto -->
+  <dialog id="modal-producto" class="modal" aria-labelledby="modal-titulo">
+    <button type="button" class="modal-cerrar" aria-label="Cerrar" data-i18n-aria="tienda.cerrar">&times;</button>
+    <div class="modal-cuerpo">
+      <div class="modal-imagen"><img src="" alt="" width="800" height="1000"></div>
+
+      <div class="modal-info">
+        <h2 class="modal-titulo" id="modal-titulo"></h2>
+        <p class="modal-categoria"></p>
+        <hr class="modal-separador">
+        <p class="modal-precio"></p>
+        <p class="modal-descripcion"></p>
+
+        <div class="modal-caja">
+          <h3 data-i18n="tienda.incluye">Lo que incluye</h3>
+          <ul class="modal-incluye"></ul>
+          <p class="modal-nota" hidden></p>
+        </div>
+
+        <div class="modal-caja-borde">
+          <h3 data-i18n="tienda.caracteristicas">Características</h3>
+          <dl class="modal-specs"></dl>
+        </div>
+      </div>
+
+      <div class="modal-compra">
+        <button type="button" class="btn-comprar" data-i18n="tienda.comprar">Comprar</button>
+        <div class="aviso-whatsapp" role="status" hidden>
+          <h4 data-i18n="tienda.whatsapp.titulo">Las compras se realizan por WhatsApp</h4>
+          <p data-i18n="tienda.whatsapp.texto">Te atendemos personalmente para confirmar disponibilidad, envío y forma de pago. Al continuar se abrirá nuestro chat con tu pedido ya escrito.</p>
+          <a class="btn-whatsapp-ir" href="https://wa.me/526463877829" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path transform="translate(7 6.6) scale(.42)" stroke-width="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="tienda.whatsapp.boton">Ir a WhatsApp</span>
+          </a>
+          <button type="button" class="btn-whatsapp-volver" data-i18n="tienda.whatsapp.volver">Seguir viendo</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Pie de página -->
+  <footer>
+    <p data-i18n="footer.derechos">&copy; 2025 CIAN Robotics - Todos los derechos reservados.</p>
+    <p class="footer-redes">
+      <a href="https://wa.me/526463877829" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/cian_robotics/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@cian.robotics" target="_blank" rel="noopener">TikTok</a>
+    </p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="whatsapp-flotante" href="https://wa.me/526463877829" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-i18n-aria="whatsapp.flotante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path transform="translate(7 6.6) scale(.42)" stroke-width="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
