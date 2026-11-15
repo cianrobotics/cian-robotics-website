@@ -4,6 +4,16 @@
 
 const WHATSAPP_NUMERO = '526463877829'; // https://wa.me/+526463877829
 
+// Promoción vigente. Se aplica a todos los productos solo entre "inicio" y "fin";
+// fuera de esas fechas la tienda muestra los precios normales automáticamente.
+// Horas en UTC: México centro = UTC-6, así que 2026-11-18T06:00:00Z es el
+// 17 de noviembre de 2026 a las 23:59 en Ciudad de México.
+const PROMOCION = {
+  descuento: 0.10,                  // 10 %
+  inicio: '2026-11-14T06:00:00Z',   // 14 nov 2026, 00:00 CDMX
+  fin: '2026-11-18T06:00:00Z'       // termina al acabar el 17 nov 2026 (CDMX)
+};
+
 const CATEGORIAS = {
   brazo: { es: 'Brazo robótico', en: 'Robotic arm' },
   pid: { es: 'Control PID', en: 'PID control' }
@@ -125,6 +135,33 @@ const PRODUCTOS = [
   const txt = obj => obj[idioma()] || obj.es;
   const precioTexto = p => '$' + p.toLocaleString('en-US') + ' ' + t('tienda.moneda');
 
+  const promoActiva = () => {
+    const ahora = Date.now();
+    return ahora >= Date.parse(PROMOCION.inicio) && ahora < Date.parse(PROMOCION.fin);
+  };
+  const pct = () => Math.round(PROMOCION.descuento * 100);
+  const precioFinal = p => promoActiva() ? Math.round(p.precio * (1 - PROMOCION.descuento)) : p.precio;
+
+  // Precio actual + precio original tachado (solo durante la promoción)
+  function bloquePrecio(p, claseActual, claseAntes) {
+    const frag = document.createDocumentFragment();
+    frag.appendChild(crearEl('span', claseActual, precioTexto(precioFinal(p))));
+    if (promoActiva()) {
+      const antes = crearEl('s', claseAntes, precioTexto(p.precio));
+      antes.setAttribute('aria-label', t('promo.precio.original') + ' ' + precioTexto(p.precio));
+      frag.appendChild(antes);
+    }
+    return frag;
+  }
+
+  function renderPromoBanner() {
+    const banner = document.querySelector('.promo-banner');
+    if (!banner) return;
+    banner.hidden = !promoActiva();
+    banner.querySelector('.promo-banner-titulo').textContent = t('promo.titulo');
+    banner.querySelector('.promo-banner-texto').textContent = t('promo.banner', { pct: pct() });
+  }
+
   let productoAbierto = null;
 
   function crearEl(tag, clase, texto) {
@@ -153,13 +190,16 @@ const PRODUCTOS = [
     img.loading = 'lazy';
     img.width = 800; img.height = 1000;
     marco.appendChild(img);
+    if (promoActiva()) marco.appendChild(crearEl('span', 'promo-sello', '-' + pct() + '%'));
 
     const info = crearEl('div', 'producto-info');
     info.appendChild(crearEl('span', 'producto-categoria', txt(CATEGORIAS[p.categoria])));
     info.appendChild(crearEl('h3', 'producto-nombre', txt(p.nombre)));
     info.appendChild(etiquetas(p));
     const pie = crearEl('div', 'producto-pie');
-    pie.appendChild(crearEl('span', 'producto-precio', precioTexto(p.precio)));
+    const precios = crearEl('div', 'producto-precios');
+    precios.appendChild(bloquePrecio(p, 'producto-precio', 'producto-precio-antes'));
+    pie.appendChild(precios);
     pie.appendChild(crearEl('span', 'producto-ver', t('tienda.ver') + ' →'));
     info.appendChild(pie);
 
@@ -169,6 +209,7 @@ const PRODUCTOS = [
   }
 
   function renderCatalogo() {
+    renderPromoBanner();
     document.querySelectorAll('[data-catalogo]').forEach(grid => {
       grid.replaceChildren(...PRODUCTOS.filter(p => p.categoria === grid.dataset.catalogo).map(tarjeta));
     });
@@ -184,7 +225,10 @@ const PRODUCTOS = [
     modal.querySelector('.modal-imagen img').alt = txt(p.nombre);
     modal.querySelector('.modal-titulo').textContent = txt(p.nombre);
     modal.querySelector('.modal-categoria').textContent = txt(CATEGORIAS[p.categoria]);
-    modal.querySelector('.modal-precio').textContent = precioTexto(p.precio);
+    modal.querySelector('.modal-precios').replaceChildren(bloquePrecio(p, 'modal-precio', 'modal-precio-antes'));
+    const promo = modal.querySelector('.modal-promo');
+    promo.hidden = !promoActiva();
+    promo.textContent = t('promo.ficha', { pct: pct() });
     modal.querySelector('.modal-descripcion').textContent = txt(p.descripcion);
 
     const lista = modal.querySelector('.modal-incluye');
@@ -201,7 +245,8 @@ const PRODUCTOS = [
       return fila;
     }));
 
-    const mensaje = t('tienda.whatsapp.mensaje', { producto: txt(p.nombre), precio: precioTexto(p.precio) });
+    const mensaje = t(promoActiva() ? 'tienda.whatsapp.mensaje.promo' : 'tienda.whatsapp.mensaje',
+      { producto: txt(p.nombre), precio: precioTexto(precioFinal(p)) });
     modal.querySelector('.btn-whatsapp-ir').href =
       'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(mensaje);
   }
