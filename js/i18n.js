@@ -60,6 +60,13 @@ const CIAN_TEXTOS = {
     'tienda.whatsapp.volver': 'Seguir viendo',
     'tienda.whatsapp.mensaje': 'Hola CIAN Robotics, quiero comprar: {producto} ({precio}).',
     'tienda.moneda': 'MXN',
+    'tienda.whatsapp.mensaje.promo': 'Hola CIAN Robotics, quiero comprar: {producto} ({precio}, precio de Buen Fin).',
+
+    // Promoción
+    'promo.titulo': 'Buen Fin',
+    'promo.banner': '{pct}% de descuento en todos los productos. Termina el 17 de noviembre.',
+    'promo.ficha': 'Precio de Buen Fin: {pct}% de descuento hasta el 17 de noviembre.',
+    'promo.precio.original': 'Precio original',
 
     // Nosotros
     'nosotros.hero.titulo': 'Nosotros',
@@ -137,6 +144,13 @@ const CIAN_TEXTOS = {
     'tienda.whatsapp.volver': 'Keep browsing',
     'tienda.whatsapp.mensaje': 'Hi CIAN Robotics, I would like to buy: {producto} ({precio}).',
     'tienda.moneda': 'MXN',
+    'tienda.whatsapp.mensaje.promo': 'Hi CIAN Robotics, I would like to buy: {producto} ({precio}, Buen Fin price).',
+
+    // Promotion
+    'promo.titulo': 'Buen Fin sale',
+    'promo.banner': '{pct}% off all products. Ends November 17.',
+    'promo.ficha': 'Buen Fin price: {pct}% off until November 17.',
+    'promo.precio.original': 'Original price',
 
     // About us
     'nosotros.hero.titulo': 'About us',

@@ -39,6 +39,12 @@
 
   <!-- Tienda -->
   <main class="tienda">
+    <!-- Aviso de promoción: se muestra solo durante las fechas de PROMOCION en js/productos.js -->
+    <div class="promo-banner" hidden>
+      <strong class="promo-banner-titulo"></strong>
+      <span class="promo-banner-texto"></span>
+    </div>
+
     <div class="filtros" role="group">
       <button type="button" class="filtro" data-filtro="todos" aria-pressed="true" data-i18n="cursos.filtro.todos">Todos</button>
       <button type="button" class="filtro" data-filtro="brazo" aria-pressed="false" data-i18n="cursos.filtro.brazo">Brazo robótico</button>
@@ -81,7 +87,8 @@
         <h2 class="modal-titulo" id="modal-titulo"></h2>
         <p class="modal-categoria"></p>
         <hr class="modal-separador">
-        <p class="modal-precio"></p>
+        <p class="modal-precios"></p>
+        <p class="modal-promo" hidden></p>
         <p class="modal-descripcion"></p>
 
         <div class="modal-caja">
